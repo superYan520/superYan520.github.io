@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: black;
+        }
+
+        canvas {
+            border: 1px solid gray;
+        }
+    </style>
+    <title>document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+</body>
+<script>
+    var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+
+    // 圆心
+    var x = 300;
+    var y = 200;
+    // 速度;
+    var xSpeed = 8;
+    var ySpeed = 2;
+    // 函数
+    // function color() {
+    //     var arr=[]
+
+    //     var colorD=
+        
+    // }
+        // var i =0;
+    
+    function draw() {
+        // 清理画布
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var color1=Math.ceil(Math.random()*255);
+        var color2=Math.ceil(Math.random()*255);
+        var color3=Math.ceil(Math.random()*255);
+        ctx.fillStyle="rgba(255,255,255, .1)";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        // if (i>=2) {
+        //     return;
+        // }
+        x += xSpeed;
+        y += ySpeed;
+
+        if (x<=20||x>=canvas.width-20) {
+            xSpeed=-xSpeed;
+            
+        };
+        if (y<=20||y>=canvas.height-20) {
+            ySpeed=-ySpeed;
+        }
+
+        ctx.beginPath();
+        // 画圆
+        ctx.arc(x, y, 25, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba("+color1+","+color2+","+color3+", .3)";
+        ctx.fill();
+
+
+        
+        // i++;
+
+
+    }
+
+    setInterval(draw, 16.7)
+</script>
+
+</html>
